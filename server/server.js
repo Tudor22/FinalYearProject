@@ -66,7 +66,6 @@ app.post('/api/register', async (req, res) => {
     })
 
     const result = await user.save()
-    console.log(result)
     res.json({
         success: true,
         message: "Welcome"
