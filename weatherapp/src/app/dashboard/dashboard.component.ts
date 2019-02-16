@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
         alert("Some problem")
       }
     })
+	window.location.reload()
   }
 
 }
