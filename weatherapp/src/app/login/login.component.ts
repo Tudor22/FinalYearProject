@@ -9,8 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private Auth: AuthService, 
-              private router: Router) { }
+  constructor(private Auth: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -29,7 +28,6 @@ export class LoginComponent implements OnInit {
         window.alert(data.message)
       }
     })
-    console.log(username, password)
   }
 
 }

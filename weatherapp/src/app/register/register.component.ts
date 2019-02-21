@@ -26,8 +26,6 @@ export class RegisterComponent implements OnInit {
       errors.push("Passwords do not match")
     }
 
-    // more validation
-
     if(errors.length === 0) {
       this.auth.registerUser(username, password).subscribe(data => {
         console.log(data)
