@@ -13,7 +13,8 @@ app.use(session({
 }))
 
 mongoose.Promise = Promise
-mongoose.connect('mongodb://localhost:27017/angulardb', {useNewUrlParser: true})
+//mongoose.connect('mongodb://localhost:27017/angulardb', {useNewUrlParser: true})
+mongoose.connect('mongodb+srv://tudor:11iulie1996@angulardb-uoozy.azure.mongodb.net/angulardb?retryWrites=true', {useNewUrlParser: true})
 .then(() => console.log('Mongoose up'))
 mongoose.set('useFindAndModify', false);
 

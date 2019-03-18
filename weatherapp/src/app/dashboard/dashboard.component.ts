@@ -30,11 +30,11 @@ export class DashboardComponent implements OnInit {
     this.user.updateQuote(value).subscribe(data => {
       if(data.success) {
         alert("Your quote was updated")
+		window.location.reload()
       } else {
         alert("Some problem")
       }
     })
-	window.location.reload()
   }
 
 }
