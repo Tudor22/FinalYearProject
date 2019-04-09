@@ -67,7 +67,7 @@ function generateWeatherAdaptiveCard(weatherData) {
     weatherCard.content.body[1].columns[2].selectAction.url = `https://www.bing.com/search?q=forecast in ${weatherData.location.name}`;
     weatherCard.content.body[1].columns[3].selectAction.url = `https://www.bing.com/search?q=forecast in ${weatherData.location.name}`;
     // set the spoken utterance
-    weatherCard.content.speak = `<s>Today the temperature is ${weatherData.current.temp_f}° F in ${weatherData.location.name}</s><s>Winds are ${weatherData.current.wind_mph} miles per hour from the ${weatherData.current.wind_dir}</s>`;
+    weatherCard.content.speak = `<s>Today the temperature is ${weatherData.current.temp_c}° C in ${weatherData.location.name}</s><s>Winds are ${weatherData.current.wind_mph} miles per hour from the ${weatherData.current.wind_dir}</s>`;
     
     // set the daily forcast info per day
     var day1 = weatherData.forecast.forecastday[0]; // today
@@ -77,19 +77,19 @@ function generateWeatherAdaptiveCard(weatherData) {
     // DAY 1
     weatherCard.content.body[1].columns[0].items[0].text = moment(day1.date).format('llll').split(',')[0]; // day name
     weatherCard.content.body[1].columns[0].items[1].url = `https:${day1.day.condition.icon}`; // day icon
-    weatherCard.content.body[1].columns[0].items[2].text = `${Math.round(day1.day.maxtemp_f)}/${Math.round(day1.day.mintemp_f)}`; // day high/low temp
+    weatherCard.content.body[1].columns[0].items[2].text = `${Math.round(day1.day.maxtemp_c)}/${Math.round(day1.day.mintemp_c)}`; // day high/low temp
     // DAY 2
     weatherCard.content.body[1].columns[1].items[0].text = moment(day2.date).format('llll').split(',')[0]; // day name
     weatherCard.content.body[1].columns[1].items[1].url = `https:${day2.day.condition.icon}`; // day icon
-    weatherCard.content.body[1].columns[1].items[2].text = `${Math.round(day2.day.maxtemp_f)}/${Math.round(day2.day.mintemp_f)}`; // day high/low temp
+    weatherCard.content.body[1].columns[1].items[2].text = `${Math.round(day2.day.maxtemp_c)}/${Math.round(day2.day.mintemp_c)}`; // day high/low temp
     // DAY 3
     weatherCard.content.body[1].columns[2].items[0].text = moment(day3.date).format('llll').split(',')[0]; // day name
     weatherCard.content.body[1].columns[2].items[1].url = `https:${day3.day.condition.icon}`; // day icon
-    weatherCard.content.body[1].columns[2].items[2].text = `${Math.round(day3.day.maxtemp_f)}/${Math.round(day3.day.mintemp_f)}`; // day high/low temp
+    weatherCard.content.body[1].columns[2].items[2].text = `${Math.round(day3.day.maxtemp_c)}/${Math.round(day3.day.mintemp_c)}`; // day high/low temp
     // DAY 4
     weatherCard.content.body[1].columns[3].items[0].text = moment(day4.date).format('llll').split(',')[0]; // day name
     weatherCard.content.body[1].columns[3].items[1].url = `https:${day4.day.condition.icon}`; // day icon
-    weatherCard.content.body[1].columns[3].items[2].text = `${Math.round(day4.day.maxtemp_f)}/${Math.round(day4.day.mintemp_f)}`; // day high/low temp
+    weatherCard.content.body[1].columns[3].items[2].text = `${Math.round(day4.day.maxtemp_c)}/${Math.round(day4.day.mintemp_c)}`; // day high/low temp
     // return the weather card attachment data
     return weatherCard;
 }
