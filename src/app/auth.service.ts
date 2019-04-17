@@ -27,14 +27,14 @@ export class AuthService {
   }
 
   getUserDetails(email, password) {
-    return this.http.post<myData>('/api/login', {
+    return this.http.post<myData>('http://localhost:3000/api/login', {
       email,
       password
     })
   }
 
   registerUser(email, password) {
-    return this.http.post<registerResponse>('/api/register', {
+    return this.http.post<registerResponse>('http://localhost:3000/api/register', {
       email,
       password
     })

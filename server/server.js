@@ -21,6 +21,17 @@ const normalizePort = val => {
     return false;
   };
 
+  app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+    res.setHeader("Access-Control-Allow-Methods",
+      "GET, POST, PATCH, DELETE, PUT, UPDATE, OPTIONS"
+    );
+    next();
+  });
 
 app.use(session({
     secret: 'hello',
@@ -32,9 +43,18 @@ app.use(session({
 
 mongoose.Promise = Promise
 //mongoose.connect('mongodb://localhost:27017/angulardb', {useNewUrlParser: true})
-mongoose.connect('mongodb+srv://tudor:11iulie1996@angulardb-uoozy.azure.mongodb.net/angulardb?retryWrites=true', {useNewUrlParser: true})
-.then(() => console.log('Mongoose up'))
+//mongoose.connect('mongodb+srv://tudor:11iulie1996@angulardb-uoozy.azure.mongodb.net/angulardb?retryWrites=true', {useNewUrlParser: true})
+//.then(() => console.log('Mongoose up'))
 mongoose.set('useFindAndModify', false);
+
+mongoose.connect('mongodb+srv://tudor:11iulie1996@angulardb-uoozy.azure.mongodb.net/angulardb?retryWrites=true', {useNewUrlParser: true}, function() { /* dummy function */ })
+    .then(() => {
+        return console.log('Mongoose up');
+    })
+    .catch(err => { // mongoose connection error will be handled here
+        console.error('App starting error:', err.stack);
+        process.exit(1);
+    });
 
 const User = require('./models/users')
 
@@ -42,6 +62,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", express.static(path.join(__dirname, "angular")))
+
+
 
 app.post('/api/login', async (req, res) => {
     const {email, password} = req.body
@@ -137,12 +159,10 @@ app.get('/api/logout', (req, res) => {
 
 
 
-const port = normalizePort(process.env.PORT || "1234");
+const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
-//app.listen(1234, () => console.log('Server listening at 1234'))
 app.use((req,res,next) => {
-    res.sebdFile(path.join(__dirname, "angular", "index.html"))
+    res.sendFile(path.join(__dirname, "angular", "index.html"))
 });
-
-app.listen(port)
+app.listen(port, () => console.log('Server listening at 3000'))
