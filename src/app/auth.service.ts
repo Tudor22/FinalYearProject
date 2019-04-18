@@ -27,14 +27,15 @@ export class AuthService {
   }
 
   getUserDetails(email, password) {
-    return this.http.post<myData>('http://localhost:3000/api/login', {
+    return this.http.post<myData>('http://4yearproject.azurewebsites.net/api/login', {
       email,
       password
     })
   }
 
+
   registerUser(email, password) {
-    return this.http.post<registerResponse>('http://localhost:3000/api/register', {
+    return this.http.post<registerResponse>('http://4yearproject.azurewebsites.net/api/register', {
       email,
       password
     })

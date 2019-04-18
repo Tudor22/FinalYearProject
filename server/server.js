@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const debug = require("debug")("node-angular")
 var path = require('path')
-
+const http = require('http')
 
 const normalizePort = val => { 
     var port = parseInt(val, 10);
@@ -159,10 +159,12 @@ app.get('/api/logout', (req, res) => {
 
 
 
-const port = normalizePort(process.env.PORT || "3000");
+const port = process.env.PORT || "3000";
 app.set("port", port);
 
 app.use((req,res,next) => {
     res.sendFile(path.join(__dirname, "angular", "index.html"))
 });
-app.listen(port, () => console.log('Server listening at 3000'))
+
+const server = http.createServer(app);
+server.listen(port, () => console.log('Server listening at 3000'));
