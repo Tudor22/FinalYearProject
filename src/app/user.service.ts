@@ -19,27 +19,38 @@ interface quoteStatus {
 interface logoutStatus {
   success: boolean
 }
+
+interface location {
+  success: boolean,
+  city: string
+}
 @Injectable()
 export class UserService {
 
   constructor(private http: HttpClient) { }
 
   getData() {
-    return this.http.get<myData>('http://4yearproject.azurewebsites.net/api/data')
+    return this.http.get<myData>('http://4yearproject.azurewebsites.net/api/userdata/data')
   }
 
   updateQuote(value) {
-    return this.http.post<quoteStatus>('http://4yearproject.azurewebsites.net/api/quote', {
+    return this.http.post<quoteStatus>('http://4yearproject.azurewebsites.net/api/userdata/quote', {
       value
     })
   }
 
   isLoggedIn(): Observable<isLoggedIn> {
-    return this.http.get<isLoggedIn>('http://4yearproject.azurewebsites.net/api/isloggedin')
+    return this.http.get<isLoggedIn>('http://4yearproject.azurewebsites.net/api/userdata/isloggedin')
   }
 
   logout() {
-    return this.http.get<logoutStatus>('http://4yearproject.azurewebsites.net/api/logout')
+    return this.http.get<logoutStatus>('http://4yearproject.azurewebsites.net/api/userdata/logout')
   }
 
+  getCity(latitude,longitude) {
+    return this.http.post<location>('http://4yearproject.azurewebsites.net/api/userdata/location', {
+      latitude,
+      longitude
+    })
+  }  
 }

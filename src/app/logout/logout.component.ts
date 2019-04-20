@@ -20,7 +20,6 @@ export class LogoutComponent implements OnInit {
       } else {
         window.alert('Some problem')
       }
-    })
-  }
-
-}
+    });
+  };
+};

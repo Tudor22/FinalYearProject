@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -12,10 +13,8 @@ export class HomeComponent implements OnInit {
   geolocationPosition: Position;
   lat: number;
   lon: number;
-  loc: string;
-  data: any;
   city: any;
-  constructor(private httpClient: HttpClient) { }
+  constructor(private user: UserService, private httpClient: HttpClient) { }
 
   ngOnInit() {
       if (window.navigator && window.navigator.geolocation) {
@@ -24,7 +23,7 @@ export class HomeComponent implements OnInit {
                 this.geolocationPosition = position,
                 this.lat = this.geolocationPosition.coords.latitude,
                 this.lon = this.geolocationPosition.coords.longitude,
-                    console.log(position)
+                    console.log(position);
             },
             error => {
                 switch (error.code) {
@@ -41,27 +40,40 @@ export class HomeComponent implements OnInit {
             }
         );
     };
-  }
+  };
 
-getAddress(latitude,longitude){
-  var url = 'https://atlas.microsoft.com/search/address/reverse/crossstreet/json?query=' + latitude + ',' + longitude + '&api-version=1.0&subscription-key=OTcP25vYNDubsAoCXV0kArBgaqFZPO35ytCPSIgtW2w';
-  this.httpClient.get(url).subscribe(response => {
-    this.data = response;
-    this.city = this.data.addresses[0].address.municipality;
-    console.log(this.city);
-});
-}
+  getCity(latitude,longitude){
+    this.user.getCity(latitude,longitude).subscribe(data => {
+      if(data.success) {
+        console.log("Success")
+        this.city = data.city
+      } else {
+        alert("Error")
+      }
+    });
+  };
 
   get_products(){
     this.httpClient.get('http://dummy.restapiexample.com/api/v1/employees').subscribe((res : any[])=>{
     console.log(res);
     });
-}
+};
   private gs  = []; 
   get_https(){
     this.httpClient.get('https://fakerestapi.azurewebsites.net/api/Books').subscribe((res : any[])=>{
     console.log(res);
     this.gs = res;
     });
-}
-}
+};
+
+postPorfile(){
+  this.httpClient.post('http://apptesting444.azurewebsites.net/api/login',
+  {
+    username: 'admin',
+    password: 'admin'
+  })
+  .subscribe((some:any) => {
+    console.log()
+  });
+};
+};

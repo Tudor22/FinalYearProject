@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  quote = "Loading your personal quote"
-  email = "Getting your email..."
+  quote = "Loading your personal quote";
+  email = "Getting your email...";
 
   constructor(private user: UserService, private router: Router) { }
 
@@ -22,8 +22,8 @@ export class DashboardComponent implements OnInit {
       } else {
         this.router.navigate(['logout'])
       }
-    })
-  }
+    });
+  };
 
   updateQuote(event) {
     const value = event.target.parentNode.querySelector('#myQuote').value
@@ -32,9 +32,8 @@ export class DashboardComponent implements OnInit {
         alert("Your quote was updated")
 		window.location.reload()
       } else {
-        alert("Some problem")
+        alert("Error")
       }
-    })
-  }
-
-}
+    });
+  };
+};

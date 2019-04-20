@@ -8,33 +8,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  model:any = {};
 
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-  }
+  };
 
   registerUser(event) {
-    event.preventDefault()
-    const errors = []
-    const target = event.target
-    const username = target.querySelector('#username').value
-    const password = target.querySelector('#password').value
-    const cpassword = target.querySelector('#cpassword').value
+    event.preventDefault();
+    const errors = [];
+    const email = this.model.email;
+    const password = this.model.password;
+    const cpassword = this.model.cpassword;
 
     if(password != cpassword) {
-      errors.push("Passwords do not match")
-    }
+      errors.push("Passwords do not match");
+    };
 
     if(errors.length === 0) {
-      this.auth.registerUser(username, password).subscribe(data => {
-        console.log(data)
+      this.auth.registerUser(email, password).subscribe(data => {
         if(data.success) {
           this.router.navigate(['dashboard'])
         }
-      })
-    }
-    console.log(username, password)
-  }
-
-}
+      });
+    };
+  };
+};

@@ -12,13 +12,13 @@ export class LoginComponent implements OnInit {
   constructor(private Auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-  }
+  };
 
   loginUser(event) {
-    event.preventDefault()
-    const target = event.target
-    const username = target.querySelector('#username').value
-    const password = target.querySelector('#password').value
+    event.preventDefault();
+    const target = event.target;
+    const username = target.querySelector('#username').value;
+    const password = target.querySelector('#password').value;
 
     this.Auth.getUserDetails(username, password).subscribe(data => {
       if(data.success) {
@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
       } else {
         window.alert(data.message)
       }
-    })
-  }
-
-}
+    });
+  };
+};
