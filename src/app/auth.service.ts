@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   getUserDetails(email, password) {
-    return this.http.post<myData>('http://4yearproject.azurewebsites.net/api/auth/login', {
+    return this.http.post<myData>('http://apptesting444.azurewebsites.net/api/auth/login', {
       email,
       password
     })
@@ -35,7 +35,7 @@ export class AuthService {
 
 
   registerUser(email, password) {
-    return this.http.post<registerResponse>('http://4yearproject.azurewebsites.net/api/auth/register', {
+    return this.http.post<registerResponse>('http://apptesting444.azurewebsites.net/api/auth/register', {
       email,
       password
     })

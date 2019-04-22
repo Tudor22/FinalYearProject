@@ -8,6 +8,7 @@ const session = require('express-session');
 // Imports backend routes
 const authRoutes = require("./routes/authentication");
 const userdataRoutes = require("./routes/userdata");
+const botRoutes = require("./routes/bot");
 
 // Connect to MongoDB Atlas
 mongoose.connect('mongodb+srv://tudor:11iulie1996@angulardb-uoozy.azure.mongodb.net/angulardb?retryWrites=true', {useNewUrlParser: true})
@@ -42,6 +43,7 @@ next();
 
 app.use("/api/auth", authRoutes);
 app.use("/api/userdata", userdataRoutes);
+app.use("/api/bot", botRoutes);
 
 app.use((req, res, next) => {
 res.sendFile(path.join(__dirname, "angular", "index.html")); // Joining the angular frontend

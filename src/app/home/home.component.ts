@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../user.service';
-
+import { BotService } from '../bot.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +14,13 @@ export class HomeComponent implements OnInit {
   lat: number;
   lon: number;
   city: any;
-  constructor(private user: UserService, private httpClient: HttpClient) { }
+  
+  convId: string;
+  id: any;
+  activities: any;
+  watermark = "0";
+
+  constructor(private bot: BotService, private user: UserService, private httpClient: HttpClient) { }
 
   ngOnInit() {
       if (window.navigator && window.navigator.geolocation) {
@@ -42,6 +48,41 @@ export class HomeComponent implements OnInit {
     };
   };
 
+  Authentication(){
+    this.bot.Authentication().subscribe(data => {
+      if(!data) {
+        alert("Error")
+      } else {
+        console.log("Success")
+        this.convId = data.conversationId
+      }
+    });
+  };
+
+  sendActivity(){
+    const message = "ssssss"
+    this.bot.sendActivity(this.convId, message).subscribe(data => {
+      if(!data) {
+        alert("Error")
+      } else {
+        console.log("Success")
+        this.id = data.id
+      }
+    });
+  };
+
+  retrieveActivity(){
+    this.bot.retrieveActivity(this.convId, this.watermark).subscribe(data => {
+      if(!data) {
+        alert("Error")
+      } else {
+        console.log("Success")
+        this.activities = data.activities;
+        this.watermark = data.watermark;
+       }
+     });
+  };
+
   getCity(latitude,longitude){
     this.user.getCity(latitude,longitude).subscribe(data => {
       if(data.success) {
@@ -53,27 +94,4 @@ export class HomeComponent implements OnInit {
     });
   };
 
-  get_products(){
-    this.httpClient.get('http://dummy.restapiexample.com/api/v1/employees').subscribe((res : any[])=>{
-    console.log(res);
-    });
-};
-  private gs  = []; 
-  get_https(){
-    this.httpClient.get('https://fakerestapi.azurewebsites.net/api/Books').subscribe((res : any[])=>{
-    console.log(res);
-    this.gs = res;
-    });
-};
-
-postPorfile(){
-  this.httpClient.post('http://apptesting444.azurewebsites.net/api/login',
-  {
-    username: 'admin',
-    password: 'admin'
-  })
-  .subscribe((some:any) => {
-    console.log()
-  });
-};
 };

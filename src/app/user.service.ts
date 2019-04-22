@@ -30,25 +30,25 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getData() {
-    return this.http.get<myData>('http://4yearproject.azurewebsites.net/api/userdata/data')
+    return this.http.get<myData>('http://apptesting444.azurewebsites.net/api/userdata/data')
   }
 
   updateQuote(value) {
-    return this.http.post<quoteStatus>('http://4yearproject.azurewebsites.net/api/userdata/quote', {
+    return this.http.post<quoteStatus>('http://apptesting444.azurewebsites.net/api/userdata/quote', {
       value
     })
   }
 
   isLoggedIn(): Observable<isLoggedIn> {
-    return this.http.get<isLoggedIn>('http://4yearproject.azurewebsites.net/api/userdata/isloggedin')
+    return this.http.get<isLoggedIn>('http://apptesting444.azurewebsites.net/api/userdata/isloggedin')
   }
 
   logout() {
-    return this.http.get<logoutStatus>('http://4yearproject.azurewebsites.net/api/userdata/logout')
+    return this.http.get<logoutStatus>('http://apptesting444.azurewebsites.net/api/userdata/logout')
   }
 
   getCity(latitude,longitude) {
-    return this.http.post<location>('http://4yearproject.azurewebsites.net/api/userdata/location', {
+    return this.http.post<location>('http://apptesting444.azurewebsites.net/api/userdata/location', {
       latitude,
       longitude
     })

@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component'
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
 import { AuthGuard } from './auth.guard';
+import { BotService } from './bot.service';
 import { LogoutComponent } from './logout/logout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
@@ -50,7 +51,7 @@ import { FormsModule } from '@angular/forms';
       }
     ])
   ],
-  providers: [AuthService, UserService, AuthGuard],
+  providers: [AuthService, UserService, AuthGuard, BotService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

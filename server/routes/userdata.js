@@ -25,7 +25,6 @@ router.post('/location', (req, res) => {
     } 
 });
 
-
 router.get('/logout', (req, res) => {
     req.session.destroy();
     res.json({
