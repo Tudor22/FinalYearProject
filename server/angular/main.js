@@ -261,13 +261,13 @@ var AuthService = /** @class */ (function () {
         configurable: true
     });
     AuthService.prototype.getUserDetails = function (email, password) {
-        return this.http.post('http://localhost:3000/api/auth/login', {
+        return this.http.post('http://apptesting444.azurewebsites.net/api/auth/login', {
             email: email,
             password: password
         });
     };
     AuthService.prototype.registerUser = function (email, password) {
-        return this.http.post('http://localhost:3000/api/auth/register', {
+        return this.http.post('http://apptesting444.azurewebsites.net/api/auth/register', {
             email: email,
             password: password
         });
@@ -311,18 +311,18 @@ var BotService = /** @class */ (function () {
             },
             "text": "hello"
         };
-        return this.http.post('http://localhost:3000/api/bot/auth', post);
+        return this.http.post('http://apptesting444.azurewebsites.net/api/bot/auth', post);
     };
     ;
     BotService.prototype.sendActivity = function (convId, message) {
-        return this.http.post("http://localhost:3000/api/bot/sendActivity", {
+        return this.http.post("http://apptesting444.azurewebsites.net/api/bot/sendActivity", {
             convId: convId,
             message: message
         });
     };
     ;
     BotService.prototype.retrieveActivity = function (convId, watermark) {
-        return this.http.get("http://localhost:3000/api/bot/retrieveActivity/" + convId + "/" + watermark);
+        return this.http.get("http://apptesting444.azurewebsites.net0/api/bot/retrieveActivity/" + convId + "/" + watermark);
     };
     ;
     BotService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -843,21 +843,21 @@ var UserService = /** @class */ (function () {
         this.http = http;
     }
     UserService.prototype.getData = function () {
-        return this.http.get('http://localhost:3000/api/userdata/data');
+        return this.http.get('http://apptesting444.azurewebsites.net/api/userdata/data');
     };
     UserService.prototype.updateQuote = function (value) {
-        return this.http.post('http://localhost:3000/api/userdata/quote', {
+        return this.http.post('http://apptesting444.azurewebsites.net/api/userdata/quote', {
             value: value
         });
     };
     UserService.prototype.isLoggedIn = function () {
-        return this.http.get('http://localhost:3000/api/userdata/isloggedin');
+        return this.http.get('http://apptesting444.azurewebsites.net/api/userdata/isloggedin');
     };
     UserService.prototype.logout = function () {
-        return this.http.get('http://localhost:3000/api/userdata/logout');
+        return this.http.get('http://apptesting444.azurewebsites.net/api/userdata/logout');
     };
     UserService.prototype.getCity = function (latitude, longitude) {
-        return this.http.post('http://localhost:3000/api/userdata/location', {
+        return this.http.post('http://apptesting444.azurewebsites.net/api/userdata/location', {
             latitude: latitude,
             longitude: longitude
         });
@@ -934,7 +934,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Tudor\Downloads\vytasss\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Tudor\Downloads\FinalYearProject\src\main.ts */"./src/main.ts");
 
 
 /***/ })
