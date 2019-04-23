@@ -1,11 +1,3 @@
-<!--
-
-
--->
-<button class="button" (click)="Authentication()">bot</button>
-<button class="button" (click)="sendActivity()">send</button>
-<button class="button" (click)="retrieveActivity()">retrive</button>
-
 		<div class="site-content">
 			<div class="site-header">
 				<div class="container">
@@ -38,9 +30,34 @@
       
 			<div class="hero">
 				<div class="container">
-         <iframe src='https://webchat.botframework.com/embed/4yearProjectBot?s=x6xA_jQogmQ.5uOQJ5-iYN1l1WqU99wvnyMsHGU2lEJjantGGJmEJug'  
-						style='background: white; min-width: 400px; width: 100%; min-height: 500px;'></iframe>
-						<div id="controls">
+					<div class='chatContainer'>
+						<div class='chatHeader'>
+								<h2> Weather Bot</h2>
+						</div>
+						<div class='chatMessages'>
+								<div *ngFor="let m of message;let i=index">
+							  <div class="mine messages">
+										<div class="message">
+													{{m}}
+										 </div>
+									</div>
+									<div *ngFor="let a of activities[i]">
+										<div class="yours messages">
+													<div class="message">
+														{{a}}
+													</div>
+										</div>
+								</div>
+								</div>
+							</div>
+						<div class='chatBottom'>
+							<form  id='chatForm'>
+								<input type='text' name='text' id='message' onfocus="this.value=''" placeholder='Enter message' />
+								<input type='submit' name='submit' value='Send message' (click)="sendActivity($event)" />
+							</form>
+						</div>
+					</div>
+					<div id="controls">
 							<input type="text" placeholder="{{city}}" id="myQuote">
 							<input type="submit" (click)="getCity([lat],[lon] )" value="Get Location">
 						</div>

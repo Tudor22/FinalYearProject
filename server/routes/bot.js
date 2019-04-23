@@ -19,6 +19,7 @@ router.post('/auth', (req, res) => {
 
 router.post('/sendActivity', (req, res) => {
     const data = req.body;
+    console.log(data.message);
     request({
         headers: {
             'Authorization': 'Bearer YBKB01qSqBs.YLZTs7QNRPLeCZpsZKlos4X-zEMwjGzLd_eJSOkPYI0',
@@ -31,7 +32,7 @@ router.post('/sendActivity', (req, res) => {
             "from": {
                 "id": 'user'
             },
-            "text": data.text,
+            "text": data.message,
         }),
         method: 'POST'
         

@@ -36,6 +36,6 @@ export class BotService {
     };
 
     retrieveActivity(convId, watermark){
-        return this.http.get<retrieveActivity>("http://apptesting444.azurewebsites.net/api/bot/retrieveActivity/" + convId + "/" + watermark)
+        return this.http.get<retrieveActivity>("http://apptesting444.azurewebsites.net0/api/bot/retrieveActivity/" + convId + "/" + watermark)
         };
 }

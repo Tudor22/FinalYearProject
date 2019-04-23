@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../user.service';
 import { BotService } from '../bot.service';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-home',
@@ -17,8 +18,11 @@ export class HomeComponent implements OnInit {
   
   convId: string;
   id: any;
-  activities: any;
+  activities: any[] = [];
   watermark = "0";
+  message: string[] = [];
+
+
 
   constructor(private bot: BotService, private user: UserService, private httpClient: HttpClient) { }
 
@@ -46,7 +50,9 @@ export class HomeComponent implements OnInit {
             }
         );
     };
+    this.Authentication();
   };
+
 
   Authentication(){
     this.bot.Authentication().subscribe(data => {
@@ -59,14 +65,16 @@ export class HomeComponent implements OnInit {
     });
   };
 
-  sendActivity(){
-    const message = "ssssss"
-    this.bot.sendActivity(this.convId, message).subscribe(data => {
+  sendActivity(event){
+    const value = event.target.parentNode.querySelector('#message').value
+    this.message.push(<string>value)
+    this.bot.sendActivity(this.convId, value).subscribe(data => {
       if(!data) {
         alert("Error")
       } else {
-        console.log("Success")
-        this.id = data.id
+        console.log("Success");
+        this.id = data.id;
+        setTimeout(() => this.retrieveActivity(),2500);
       }
     });
   };
@@ -77,7 +85,11 @@ export class HomeComponent implements OnInit {
         alert("Error")
       } else {
         console.log("Success")
-        this.activities = data.activities;
+        const activ = data.activities.map(function(data){
+          return data;
+        });
+        this.activities.push(activ);
+        console.log(this.activities);
         this.watermark = data.watermark;
        }
      });
