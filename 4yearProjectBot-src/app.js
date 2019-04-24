@@ -77,8 +77,8 @@ var bot = new builder.UniversalBot(connector, {
 
 		// default reply handler
 		var defaultReplyHandler = function (session) {
-			session.send(`Sorry, I did not understand ${session.message.text}`);
-			session.endConversation('You can request the current weather forecast for CITY_NAME by typing: "what is the weather in Dublin?"');
+			session.send(`Sorry, I did not understand ${session.message.text}.  You can request the current weather forecast for CITY_NAME by typing: "what is the weather in Dublin?"`);
+			session.endConversation('');
 		};
 
 		// bind LUIS recognizer to intent dialog
