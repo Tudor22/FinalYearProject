@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  model:any = {};
+  model: any = {};
 
   constructor(private auth: AuthService, private router: Router) { }
 
@@ -22,13 +22,13 @@ export class RegisterComponent implements OnInit {
     const password = this.model.password;
     const cpassword = this.model.cpassword;
 
-    if(password != cpassword) {
+    if (password != cpassword) {
       errors.push("Passwords do not match");
     };
 
-    if(errors.length === 0) {
+    if (errors.length === 0) {
       this.auth.registerUser(email, password).subscribe(data => {
-        if(data.success) {
+        if (data.success) {
           this.router.navigate(['dashboard'])
         }
       });

@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.user.getData().subscribe(data => {
-      if(data.status) {
+      if (data.status) {
         this.quote = data.quote
         this.email = data.email
       } else {
@@ -28,9 +28,9 @@ export class DashboardComponent implements OnInit {
   updateQuote(event) {
     const value = event.target.parentNode.querySelector('#myQuote').value
     this.user.updateQuote(value).subscribe(data => {
-      if(data.success) {
+      if (data.success) {
         alert("Your quote was updated")
-		window.location.reload()
+        window.location.reload()
       } else {
         alert("Error")
       }

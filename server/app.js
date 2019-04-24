@@ -11,13 +11,13 @@ const userdataRoutes = require("./routes/userdata");
 const botRoutes = require("./routes/bot");
 
 // Connect to MongoDB Atlas
-mongoose.connect('mongodb+srv://tudor:11iulie1996@angulardb-uoozy.azure.mongodb.net/angulardb?retryWrites=true', {useNewUrlParser: true})
-.then(() => {
-console.log('Connected to the database!');
-})
-.catch(() => {
-console.log('Connection to database failed!');
-});
+mongoose.connect('mongodb+srv://tudor:11iulie1996@angulardb-uoozy.azure.mongodb.net/angulardb?retryWrites=true', { useNewUrlParser: true })
+    .then(() => {
+        console.log('Connected to the database!');
+    })
+    .catch(() => {
+        console.log('Connection to database failed!');
+    });
 mongoose.set('useFindAndModify', false);
 
 // Setup Express-session for cookies
@@ -35,10 +35,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-res.setHeader("Access-Control-Allow-Origin", "*");
-res.setHeader( "Access-Control-Allow-Headers", "*");
-res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, PUT, UPDATE, OPTIONS");
-next();
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, PUT, UPDATE, OPTIONS");
+    next();
 });
 
 app.use("/api/auth", authRoutes);
@@ -46,6 +46,6 @@ app.use("/api/userdata", userdataRoutes);
 app.use("/api/bot", botRoutes);
 
 app.use((req, res, next) => {
-res.sendFile(path.join(__dirname, "angular", "index.html")); // Joining the angular frontend
+    res.sendFile(path.join(__dirname, "angular", "index.html")); // Joining the angular frontend
 });
 module.exports = app;

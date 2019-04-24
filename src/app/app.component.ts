@@ -10,10 +10,10 @@ export class AppComponent {
   records = []
 
   constructor() {
-    
+
   }
 
   ngOnInit() {
-    
+
   }
 }

@@ -1,54 +1,54 @@
 <div class="site-content">
-    <div class="site-header">
-      <div class="container">
-        <a routerLink="/" class="branding">
-          <div class="logo-type">
-            <h1 class="site-title">WeatherApp</h1>
-          </div>
-        </a>
-
-        <div class="main-navigation">
-          <button type="button" class="menu-toggle"></button>
-          <ul class="menu">
-            <li class="menu-item"><a routerLink="/">Home</a></li>
-            <li class="menu-item current-menu-item"><a routerLink="/login">Login</a></li>
-            <li class="menu-item"> <a routerLink="/register">Register</a></li>
-            <li class="menu-item"><a routerLink="/dashboard">Dashboard</a></li>
-          </ul>
-        </div> 
-
-        <div class="mobile-navigation" style="display: block;">
-          <ul class="menu">
-            <li class="menu-item"><a routerLink="/">Home</a></li>
-            <li class="menu-item current-menu-item"><a routerLink="/login">Login</a></li>
-            <li class="menu-item"> <a routerLink="/register">Register</a></li>
-            <li class="menu-item"><a routerLink="/dashboard">Dashboard</a></li>
-          </ul>
+  <div class="site-header">
+    <div class="container">
+      <a routerLink="/" class="branding">
+        <div class="logo-type">
+          <h1 class="site-title">WeatherApp</h1>
         </div>
+      </a>
+
+      <div class="main-navigation">
+        <button type="button" class="menu-toggle"></button>
+        <ul class="menu">
+          <li class="menu-item"><a routerLink="/">Home</a></li>
+          <li class="menu-item current-menu-item"><a routerLink="/login">Login</a></li>
+          <li class="menu-item"> <a routerLink="/register">Register</a></li>
+          <li class="menu-item"><a routerLink="/dashboard">Dashboard</a></li>
+        </ul>
+      </div>
+
+      <div class="mobile-navigation" style="display: block;">
+        <ul class="menu">
+          <li class="menu-item"><a routerLink="/">Home</a></li>
+          <li class="menu-item current-menu-item"><a routerLink="/login">Login</a></li>
+          <li class="menu-item"> <a routerLink="/register">Register</a></li>
+          <li class="menu-item"><a routerLink="/dashboard">Dashboard</a></li>
+        </ul>
       </div>
     </div>
-    
-    <div class="hero">
-      <div class="container">
-          <form (submit)="loginUser($event)">
-              <h2>Login Here</h2>
-              <div>
-                <input type="text" autocomplete="off" placeholder="Email" id="email">
-              </div>
-              <div>
-                <input type="password" autocomplete="off" placeholder="Password" id="password">
-              </div>
-              <div>
-                <input type="submit" value="Submit">
-              </div>
-            </form>
-      </div>
-    </div>
-  
-    
-    <footer class="site-footer">
-      <div class="container">
-        <p class="colophon">&copy; 2019 Tudor Voda. All rights reserved.</p>
-      </div>
-    </footer>
   </div>
+
+  <div class="hero">
+    <div class="container">
+      <form (submit)="loginUser($event)">
+        <h2>Login Here</h2>
+        <div>
+          <input type="text" autocomplete="off" placeholder="Email" id="email">
+        </div>
+        <div>
+          <input type="password" autocomplete="off" placeholder="Password" id="password">
+        </div>
+        <div>
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="colophon">&copy; 2019 Tudor Voda. All rights reserved.</p>
+    </div>
+  </footer>
+</div>

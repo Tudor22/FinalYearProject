@@ -25,17 +25,17 @@ router.post('/sendActivity', (req, res) => {
             'Authorization': 'Bearer YBKB01qSqBs.YLZTs7QNRPLeCZpsZKlos4X-zEMwjGzLd_eJSOkPYI0',
             'Content-Type': 'application/json'
         },
-        uri: 'https://directline.botframework.com/v3/directline/conversations/'+ data.convId + '/activities',
-        body: 
+        uri: 'https://directline.botframework.com/v3/directline/conversations/' + data.convId + '/activities',
+        body:
             JSON.stringify({
-            "type": "message",
-            "from": {
-                "id": 'user'
-            },
-            "text": data.message,
-        }),
+                "type": "message",
+                "from": {
+                    "id": 'user'
+                },
+                "text": data.message,
+            }),
         method: 'POST'
-        
+
     }, function (error, response, body) {
         console.log(response.body);
         return res.send(response.body);
@@ -43,17 +43,17 @@ router.post('/sendActivity', (req, res) => {
 });
 
 
-router.get('/retrieveActivity/:id/:watermark', (req,res) => {
-    data = req.params;
+router.get('/retrieveActivity/:id/:watermark', (req, res) => {
     request({
         headers: {
             'Authorization': 'Bearer YBKB01qSqBs.YLZTs7QNRPLeCZpsZKlos4X-zEMwjGzLd_eJSOkPYI0'
         },
-        uri: 'https://directline.botframework.com/v3/directline/conversations/'+ data.id + '/activities?watermark='+ data.watermark,
+        uri: 'https://directline.botframework.com/v3/directline/conversations/' + req.params.id + '/activities?watermark=' + req.params.watermark,
         method: 'GET'
     }, function (error, response, body) {
         console.log(response.body);
         return res.send(response.body);
+
     });
 
 });

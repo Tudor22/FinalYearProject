@@ -1,73 +1,85 @@
-		<div class="site-content">
-			<div class="site-header">
-				<div class="container">
-					<a routerLink="/" class="branding">
-						<div class="logo-type">
-							<h1 class="site-title">WeatherApp</h1>
-						</div>
-					</a>
-
-					<div class="main-navigation">
-						<button type="button" class="menu-toggle"></button>
-						<ul class="menu">
-							<li class="menu-item current-menu-item"><a routerLink="/">Home</a></li>
-              <li class="menu-item"><a routerLink="/login">Login</a></li>
-              <li class="menu-item"> <a routerLink="/register">Register</a></li>
-              <li class="menu-item"><a routerLink="/dashboard">Dashboard</a></li>
-						</ul>
-					</div> 
-
-          <div class="mobile-navigation" style="display: block;">
-            <ul class="menu">
-              <li class="menu-item current-menu-item"><a routerLink="/">Home</a></li>
-              <li class="menu-item"><a routerLink="/login">Login</a></li>
-              <li class="menu-item"> <a routerLink="/register">Register</a></li>
-              <li class="menu-item"><a routerLink="/dashboard">Dashboard</a></li>
-            </ul>
-          </div>
+<div class="site-content">
+	<div class="site-header">
+		<div class="container">
+			<a routerLink="/" class="branding">
+				<div class="logo-type">
+					<h1 class="site-title">WeatherApp</h1>
 				</div>
-      </div>
-      
-			<div class="hero">
-				<div class="container">
+			</a>
+
+			<div class="main-navigation">
+				<button type="button" class="menu-toggle"></button>
+				<ul class="menu">
+					<li class="menu-item current-menu-item"><a routerLink="/">Home</a></li>
+					<li class="menu-item"><a routerLink="/login">Login</a></li>
+					<li class="menu-item"> <a routerLink="/register">Register</a></li>
+					<li class="menu-item"><a routerLink="/dashboard">Dashboard</a></li>
+				</ul>
+			</div>
+
+			<div class="mobile-navigation" style="display: block;">
+				<ul class="menu">
+					<li class="menu-item current-menu-item"><a routerLink="/">Home</a></li>
+					<li class="menu-item"><a routerLink="/login">Login</a></li>
+					<li class="menu-item"> <a routerLink="/register">Register</a></li>
+					<li class="menu-item"><a routerLink="/dashboard">Dashboard</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="hero">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
 					<div class='chatContainer'>
 						<div class='chatHeader'>
-								<h2> Weather Bot</h2>
+							<h2> Weather Bot</h2>
 						</div>
 						<div class='chatMessages'>
-								<div *ngFor="let m of message;let i=index">
-							  <div class="mine messages">
-										<div class="message">
-													{{m}}
-										 </div>
+							<div *ngFor="let m of message;let i=index">
+								<div class="mine messages">
+									<div class="message" id="sent">
+										<p> {{ m }} </p>
 									</div>
-									<div *ngFor="let a of activities[i]">
-										<div class="yours messages">
-													<div class="message">
-														{{a}}
-													</div>
-										</div>
 								</div>
+								<div *ngFor="let a of activities[i]">
+									<div class="yours messages">
+										<div class="message">
+											<p> {{a}} </p>
+										</div>
+									</div>
 								</div>
 							</div>
+						</div>
 						<div class='chatBottom'>
-							<form  id='chatForm'>
-								<input type='text' name='text' id='message' onfocus="this.value=''" placeholder='Enter message' />
-								<input type='submit' name='submit' value='Send message' (click)="sendActivity($event)" />
+							<form id='chatForm'>
+								<input type='text' name='text' id='message' onfocus="this.value=''" value='{{city}}'
+									placeholder='' />
+								<input type='submit' name='submit' value='Send message'
+									(click)="sendActivity($event)" />
 							</form>
 						</div>
 					</div>
-					<div id="controls">
-							<input type="text" placeholder="{{city}}" id="myQuote">
-							<input type="submit" (click)="getCity([lat],[lon] )" value="Get Location">
+				</div>
+
+				<div class="col-md-6">
+					<div class='chatContainer'>
+						<div class='chatMessages' id="card">
+							<p> </p>
 						</div>
+					</div>
+					<div class="controls">
+						<input type="submit" (click)="getCity([lat],[lon] )" value="Get Location">
+					</div>
 				</div>
 			</div>
-		
-      
-			<footer class="site-footer">
-				<div class="container">
-					<p class="colophon">&copy; 2019 Tudor Voda. All rights reserved.</p>
-				</div>
-			</footer>
 		</div>
+	</div>
+
+	<footer class="site-footer">
+		<div class="container">
+			<p class="colophon">&copy; 2019 Tudor Voda. All rights reserved.</p>
+		</div>
+	</footer>
+</div>

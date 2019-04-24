@@ -3,18 +3,18 @@ import { HttpClient } from '@angular/common/http';
 
 interface auth {
     conversationId: string
-  }
-interface sendActivity{
+}
+interface sendActivity {
     id: any
 }
-interface retrieveActivity{
+interface retrieveActivity {
     activities: any,
     watermark: string
 }
 @Injectable()
 export class BotService {
 
- constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
     Authentication() {
         const post = {
@@ -23,19 +23,19 @@ export class BotService {
                 "id": "user1"
             },
             "text": "hello"
-            };
-        return this.http.post<auth>('http://apptesting444.azurewebsites.net/api/bot/auth', post)
-    };
-
-    sendActivity(convId, message){
-        return this.http.post<sendActivity>("http://apptesting444.azurewebsites.net/api/bot/sendActivity",
-        {
-        convId,
-        message
-        });
-    };
-
-    retrieveActivity(convId, watermark){
-        return this.http.get<retrieveActivity>("http://apptesting444.azurewebsites.net0/api/bot/retrieveActivity/" + convId + "/" + watermark)
         };
+        return this.http.post<auth>('http://4yearproject.azurewebsites.net/api/bot/auth', post)
+    };
+
+    sendActivity(convId, message) {
+        return this.http.post<sendActivity>("http://4yearproject.azurewebsites.net/api/bot/sendActivity",
+            {
+                convId,
+                message
+            });
+    };
+
+    retrieveActivity(convId, watermark) {
+        return this.http.get<retrieveActivity>("http://4yearproject.azurewebsites.net/api/bot/retrieveActivity/" + convId + "/" + watermark)
+    };
 }
