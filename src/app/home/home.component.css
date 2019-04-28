@@ -62,7 +62,7 @@ input[type=text], select, textarea {
 }
 
 .chatContainer > .chatBottom form input[type='text']{
-  width: 50%;
+  width: 45%;
   padding: 3px;
   padding-left: 10px;
   border: 1px solid ;

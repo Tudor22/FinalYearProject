@@ -7,7 +7,7 @@ router.post('/location', (req, res) => {
     const url = 'https://atlas.microsoft.com/search/address/reverse/crossstreet/json?query=' + req.body.latitude + ',' + req.body.longitude +
         '&api-version=1.0&subscription-key=OTcP25vYNDubsAoCXV0kArBgaqFZPO35ytCPSIgtW2w';
     if (req.body.latitude == '' || req.body.longitude == '') {
-        res.status(401).json({  //No coordinates
+        return res.status(401).json({  //No coordinates
             success: false
         });
     } else {
@@ -16,7 +16,7 @@ router.post('/location', (req, res) => {
             city = city.addresses[0].address.municipality;
             console.log(response.body);
             console.log(city);
-            res.status(200).json({  //Successfully got city name
+            return res.status(200).json({  //Successfully got city name
                 success: true,
                 city: city
             });
@@ -26,13 +26,13 @@ router.post('/location', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.session.destroy();
-    res.status(200).json({  //Successfully logout and destroyed session
+    return res.status(200).json({  //Successfully logout and destroyed session
         success: true
     });
 });
 
 router.get('/isloggedin', (req, res) => {
-    res.status(200).json({  //Successfully checked if user is logged in
+    return res.status(200).json({  //Successfully checked if user is logged in
         status: !!req.session.user
     });
 });
@@ -47,7 +47,7 @@ router.get('/data', async (req, res) => {
                 });
             }
             else {
-                res.status(200).json({  //Successfully get user data
+                return res.status(200).json({  //Successfully get user data
                     status: true,
                     email: req.session.user,
                     quote: user.quote
@@ -60,21 +60,6 @@ router.get('/data', async (req, res) => {
                 messsage: "Error"
             });
         });
-
-        /*
-    var user = await User.findOne({ email: req.session.user });
-    if (!user) {
-        res.json({
-            status: false,
-            message: 'User was delete'
-        });
-    } else {
-        res.json({
-            status: true,
-            email: req.session.user,
-            quote: user.quote
-        });
-    }*/
 });
 
 router.post('/quote', async (req, res) => {
@@ -88,7 +73,7 @@ router.post('/quote', async (req, res) => {
             }
             else {
                 await User.findOneAndUpdate({ email: req.session.user }, { $set: { quote: req.body.value } }, { upsert: true });
-                res.status(200).json({  //Successfully get user quote
+                return res.status(200).json({  //Successfully get user quote
                     success: true
                 });
             }
@@ -99,18 +84,5 @@ router.post('/quote', async (req, res) => {
                 messsage: "Error"
             });
         });
-    /*
-    var user = await User.findOne({ email: req.session.user });
-    if (!user) {
-        res.json({
-            success: false,
-            message: 'Invalid user'
-        });
-        return
-    }
-    await User.findOneAndUpdate({ email: req.session.user }, { $set: { quote: req.body.value } }, { upsert: true });
-    res.json({
-        success: true
-    });*/
 });
 module.exports = router;

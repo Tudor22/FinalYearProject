@@ -19,12 +19,12 @@ router.post("/login", (req, res, next) => {
                     messsage: "Login failed"
                 });
             }
-            else{
-            req.session.user = email;
-            req.session.save();
-            res.status(200).json({  //Successfully login
-                success: true
-            });
+            else {
+                req.session.user = email;
+                req.session.save();
+                return res.status(200).json({  //Successfully login
+                    success: true
+                });
             }
         })
         .catch(err => {
@@ -46,7 +46,7 @@ router.post('/register', async (req, res) => {
                 newUser.password = newUser.generateHash(password);
 
                 var result = newUser.save();
-                res.status(200).json({  //Successfully registration
+                return res.status(200).json({  //Successfully registration
                     success: true,
                     message: "Welcome"
                 });
