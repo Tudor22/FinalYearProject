@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private user: UserService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit() { //Gets the user quote from the database
     this.user.getData().subscribe(data => {
       if (data.status) {
         this.quote = data.quote
@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
     });
   };
 
-  updateQuote(event) {
+  updateQuote(event) { //Updates the user new quote to the database
     const value = event.target.parentNode.querySelector('#myQuote').value
     this.user.updateQuote(value).subscribe(data => {
       if (data.success) {

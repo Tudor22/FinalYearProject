@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
 
   constructor(private auth: AuthService, private router: Router, private user: UserService) { }
 
-  canActivate(
+  canActivate( //If user is logged in it set a value to true, giving access to the dashboard
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
@@ -27,5 +27,5 @@ export class AuthGuard implements CanActivate {
         return false
       }
     }))
-  }
-}
+  };
+};

@@ -1,6 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { AuthService } from '../auth.service';
 import { LoginComponent } from './login.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -8,7 +12,12 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent]
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule
+    ],
+      declarations: [LoginComponent],
+      providers: [AuthService]
     })
       .compileComponents();
   }));
@@ -19,7 +28,7 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () => { //Test to check if the login component is created
     expect(component).toBeTruthy();
   });
 });

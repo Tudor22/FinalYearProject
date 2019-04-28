@@ -12,7 +12,7 @@ export class LogoutComponent implements OnInit {
 
   constructor(private user: UserService, private router: Router, private auth: AuthService) { }
 
-  ngOnInit() {
+  ngOnInit() { //Logout and destroy session
     this.user.logout().subscribe(data => {
       if (data.success) {
         this.router.navigate([''])

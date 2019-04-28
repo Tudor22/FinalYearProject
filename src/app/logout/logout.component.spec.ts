@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { UserService} from '../user.service';
+import { AuthService } from '../auth.service';
 import { LogoutComponent } from './logout.component';
 
 describe('LogoutComponent', () => {
@@ -8,7 +11,12 @@ describe('LogoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LogoutComponent]
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule
+    ],
+      declarations: [LogoutComponent],
+      providers: [AuthService, UserService]
     })
       .compileComponents();
   }));
@@ -19,7 +27,7 @@ describe('LogoutComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () => { //Test to check if the logout component is created
     expect(component).toBeTruthy();
   });
 });

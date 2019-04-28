@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from '../auth.service';
 import { RegisterComponent } from './register.component';
+import { FormsModule } from '@angular/forms';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -8,7 +11,13 @@ describe('RegisterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RegisterComponent]
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        FormsModule
+    ],
+      declarations: [RegisterComponent],
+      providers: [AuthService]
     })
       .compileComponents();
   }));
@@ -19,7 +28,7 @@ describe('RegisterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () => { //Test to check if the register component is created
     expect(component).toBeTruthy();
   });
 });

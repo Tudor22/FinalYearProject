@@ -56,8 +56,12 @@
 							<form id='chatForm'>
 								<input type='text' name='text' id='message' onfocus="this.value=''" value='{{city}}'
 									placeholder='' />
-								<input type='submit' name='submit' value='Send message'
-									(click)="sendActivity($event)" />
+								<button type="button" class="btn btn-success" (click)="sendActivity($event)">
+									<span class="glyphicon glyphicon-envelope"></span> Send message
+								</button>
+								<button type="button" class="btn btn-success" (click)="getCity([lat],[lon])">
+									<span class="glyphicon glyphicon-map-marker"></span> Location
+								</button>
 							</form>
 						</div>
 					</div>
@@ -68,9 +72,6 @@
 						<div class='chatMessages' id="card">
 							<p> </p>
 						</div>
-					</div>
-					<div class="controls">
-						<input type="submit" (click)="getCity([lat],[lon] )" value="Get Location">
 					</div>
 				</div>
 			</div>

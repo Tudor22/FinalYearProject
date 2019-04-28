@@ -14,13 +14,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   };
 
-  loginUser(event) {
+  loginUser(event) { //Login 
     event.preventDefault();
     const target = event.target;
     const email = target.querySelector('#email').value;
     const password = target.querySelector('#password').value;
 
-    this.Auth.getUserDetails(email, password).subscribe(data => {
+    this.Auth.login(email, password).subscribe(data => {
       if (data.success) {
         this.router.navigate(['dashboard'])
         this.Auth.setLoggedIn(true)

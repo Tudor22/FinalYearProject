@@ -20,25 +20,23 @@ export class AuthService {
 
   setLoggedIn(value: boolean) {
     this.loggedInStatus = value
-  }
+  };
 
-  get isLoggedIn() {
+  isLoggedIn() {
     return this.loggedInStatus
-  }
+  };
 
-  getUserDetails(email, password) {
+  login(email, password) { //Post request to backend from the user to login
     return this.http.post<myData>('http://4yearproject.azurewebsites.net/api/auth/login', {
       email,
       password
     })
-  }
+  };
 
-
-  registerUser(email, password) {
+  registerUser(email, password) { //Post request to backend from the user to register
     return this.http.post<registerResponse>('http://4yearproject.azurewebsites.net/api/auth/register', {
       email,
       password
     })
-  }
-
-}
+  };
+};

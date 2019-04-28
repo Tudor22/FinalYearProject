@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { UserService} from '../user.service';
 import { DashboardComponent } from './dashboard.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -8,8 +10,14 @@ describe('DashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DashboardComponent]
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule
+    ],
+      declarations: [DashboardComponent],
+      providers: [UserService]
     })
+    
       .compileComponents();
   }));
 
@@ -19,7 +27,7 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () => { //Test to check if the dashboard component is created
     expect(component).toBeTruthy();
   });
 });

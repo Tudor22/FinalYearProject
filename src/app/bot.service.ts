@@ -15,8 +15,8 @@ interface retrieveActivity {
 export class BotService {
 
     constructor(private http: HttpClient) { }
-
-    Authentication() {
+ 
+    Authentication() { //Post request to backend to get a conversation ID from the bot
         const post = {
             "type": "message",
             "from": {
@@ -27,7 +27,7 @@ export class BotService {
         return this.http.post<auth>('http://4yearproject.azurewebsites.net/api/bot/auth', post)
     };
 
-    sendActivity(convId, message) {
+    sendActivity(convId, message) { //Post request to backend to send a message to the bot and get a conversation ID
         return this.http.post<sendActivity>("http://4yearproject.azurewebsites.net/api/bot/sendActivity",
             {
                 convId,
@@ -35,7 +35,7 @@ export class BotService {
             });
     };
 
-    retrieveActivity(convId, watermark) {
+    retrieveActivity(convId, watermark) { //Get request to backend with conversation ID and watermark as parameters, to get the bot response to the message sent by the user 
         return this.http.get<retrieveActivity>("http://4yearproject.azurewebsites.net/api/bot/retrieveActivity/" + convId + "/" + watermark)
     };
-}
+};

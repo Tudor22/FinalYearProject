@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   };
 
-  registerUser(event) {
+  registerUser(event) {// Registration
     event.preventDefault();
     const errors = [];
     const email = this.model.email;
@@ -26,10 +26,10 @@ export class RegisterComponent implements OnInit {
       errors.push("Passwords do not match");
     };
 
-    if (errors.length === 0) {
+    if (errors.length === 0) { //Checks for no errors
       this.auth.registerUser(email, password).subscribe(data => {
         if (data.success) {
-          this.router.navigate(['dashboard'])
+          this.router.navigate(['login'])
         }
       });
     };

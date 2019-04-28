@@ -23,12 +23,9 @@ export class HomeComponent implements OnInit {
   message: string[] = [];
   card: any;
 
-
-
-
   constructor(private bot: BotService, private user: UserService, private httpClient: HttpClient) { }
 
-  ngOnInit() {
+  ngOnInit() { //If location allowed on browser it gets the user coordinates
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
         position => {
@@ -52,27 +49,10 @@ export class HomeComponent implements OnInit {
         }
       );
     };
-    this.Authentication();
-
+    this.Authentication(); //Call authentication method when pages to load to get the conversation id from the bot
   };
 
-  renderCard() {
-    var adaptiveCard = new AdaptiveCards.AdaptiveCard();
-    adaptiveCard.hostConfig = new AdaptiveCards.HostConfig({
-      fontFamily: "Segoe UI, Helvetica Neue, sans-serif"
-    });
-    adaptiveCard.onExecuteAction = function (action) { alert("Ow!"); }
-    adaptiveCard.parse(this.card);
-    var renderedCard = adaptiveCard.render();
-    var node = document.createElement("P");
-    var textnode = document.body.appendChild(renderedCard);
-    node.appendChild(textnode);
-    document.getElementById("card").appendChild(node);
-
-  }
-
-
-  Authentication() {
+  Authentication() { //Get the conversation ID from the bot
     this.bot.Authentication().subscribe(data => {
       if (!data) {
         alert("Error")
@@ -83,7 +63,7 @@ export class HomeComponent implements OnInit {
     });
   };
 
-  sendActivity(event) {
+  sendActivity(event) { //Sent message to the bot from the user
     const value = event.target.parentNode.querySelector('#message').value
     this.message.push(<string>value)
     this.bot.sendActivity(this.convId, value).subscribe(data => {
@@ -92,12 +72,12 @@ export class HomeComponent implements OnInit {
       } else {
         console.log("Success");
         this.id = data.id;
-        setTimeout(() => this.retrieveActivity(), 2500);
+        setTimeout(() => this.retrieveActivity(), 2500); //Waits then retrieve message from the bot
       }
     });
   };
 
-  retrieveActivity() {
+  retrieveActivity() { //Retrieve message from the bot
     this.bot.retrieveActivity(this.convId, this.watermark).subscribe(data => {
 
       if (!data) {
@@ -120,7 +100,21 @@ export class HomeComponent implements OnInit {
     });
   };
 
-  getCity(latitude, longitude) {
+  renderCard() { //Get the weather data from the bot and renders it to a card
+    var adaptiveCard = new AdaptiveCards.AdaptiveCard();
+    adaptiveCard.hostConfig = new AdaptiveCards.HostConfig({
+      fontFamily: "Segoe UI, Helvetica Neue, sans-serif"
+    });
+    adaptiveCard.onExecuteAction = function (action) { alert("Ow!"); }
+    adaptiveCard.parse(this.card);
+    var renderedCard = adaptiveCard.render();
+    var node = document.createElement("P");
+    var textnode = document.body.appendChild(renderedCard);
+    node.appendChild(textnode);
+    document.getElementById("card").appendChild(node);
+  };
+
+  getCity(latitude, longitude) { //Get the city name from the user coordinates
     this.user.getCity(latitude, longitude).subscribe(data => {
       if (data.success) {
         console.log("Success")
