@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['dashboard'])
         this.Auth.setLoggedIn(true)
       } else {
-        window.alert(data.message)
+        window.alert("Wrong username or password")
       }
     });
   };

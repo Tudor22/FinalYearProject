@@ -664,7 +664,7 @@ var LoginComponent = /** @class */ (function () {
                 _this.Auth.setLoggedIn(true);
             }
             else {
-                window.alert(data.message);
+                window.alert("Wrong username or password");
             }
         });
     };
@@ -826,6 +826,9 @@ var RegisterComponent = /** @class */ (function () {
             this.auth.registerUser(email, password).subscribe(function (data) {
                 if (data.success) {
                     _this.router.navigate(['login']);
+                }
+                else {
+                    window.alert(data.message);
                 }
             });
         }
