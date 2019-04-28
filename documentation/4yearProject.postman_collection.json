@@ -1,0 +1,469 @@
+{
+	"variables": [],
+	"info": {
+		"name": "4yearProject",
+		"_postman_id": "9d1da625-a49f-4221-f549-da424cb9c503",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/auth/register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"// Checking whether the response has a status 200. If so, the request is successful.\r",
+							"\r",
+							"tests[\"content-type header is present\"] = postman.getResponseHeader(\"content-type\");\r",
+							"// Checking whether the Content-type header is present.\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking success parameter from JSON data\"] = jsonData.success === true;\r",
+							"// Checking whether the JSON parameter \"success\" exists and whether its value is true\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking message parameter from JSON data\"] = jsonData.message === \"Welcome\";\r",
+							"// Checking whether the JSON parameter \"message\" exists and whether its value is Welcome\r",
+							"\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/auth/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "test@test.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "register testing"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/auth/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"// Checking whether the response has a status 200. If so, the request is successful.\r",
+							"\r",
+							"tests[\"content-type header is present\"] = postman.getResponseHeader(\"content-type\");\r",
+							"// Checking whether the Content-type header is present.\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking success parameter from JSON data\"] = jsonData.success === true;\r",
+							"// Checking whether the JSON parameter \"success\" exists and whether its value is true"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/auth/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "test@test.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/userdata/data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"// Checking whether the response has a status 200. If so, the request is successful.\r",
+							"\r",
+							"tests[\"content-type header is present\"] = postman.getResponseHeader(\"content-type\");\r",
+							"// Checking whether the Content-type header is present.\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking status parameter from JSON data\"] = jsonData.status === true;\r",
+							"// Checking whether the JSON parameter \"status\" exists and whether its value is true\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking email parameter from JSON data\"] = jsonData.email === \"test@test.com\";\r",
+							"// Checking whether the JSON parameter \"email\" exists and whether its value is test@test.com\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking quote parameter from JSON data\"] = jsonData.quote === \"You have no quote\";\r",
+							"// Checking whether the JSON parameter \"quote\" exists and whether its value is You have no quote\""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/userdata/data",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/userdata/quote",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"// Checking whether the response has a status 200. If so, the request is successful.\r",
+							"\r",
+							"tests[\"content-type header is present\"] = postman.getResponseHeader(\"content-type\");\r",
+							"// Checking whether the Content-type header is present.\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking success parameter from JSON data\"] = jsonData.success === true;\r",
+							"// Checking whether the JSON parameter \"success\" exists and whether its value is true\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/userdata/quote",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "value",
+							"value": "Hello",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/userdata/isloggedin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"// Checking whether the response has a status 200. If so, the request is successful.\r",
+							"\r",
+							"tests[\"content-type header is present\"] = postman.getResponseHeader(\"content-type\");\r",
+							"// Checking whether the Content-type header is present.\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking status parameter from JSON data\"] = jsonData.status === true;\r",
+							"// Checking whether the JSON parameter \"status\" exists and whether its value is true\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/userdata/isloggedin",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/userdata/logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"// Checking whether the response has a status 200. If so, the request is successful.\r",
+							"\r",
+							"tests[\"content-type header is present\"] = postman.getResponseHeader(\"content-type\");\r",
+							"// Checking whether the Content-type header is present.\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking success parameter from JSON data\"] = jsonData.success === true;\r",
+							"// Checking whether the JSON parameter \"success\" exists and whether its value is true\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/userdata/logout",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/userdata/location",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"// Checking whether the response has a status 200. If so, the request is successful.\r",
+							"\r",
+							"tests[\"content-type header is present\"] = postman.getResponseHeader(\"content-type\");\r",
+							"// Checking whether the Content-type header is present.\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking success parameter from JSON data\"] = jsonData.success === true;\r",
+							"// Checking whether the JSON parameter \"success\" exists and whether its value is true\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking city parameter from JSON data\"] = jsonData.city === \"Dublin\";\r",
+							"// Checking whether the JSON parameter \"city\" exists and whether its value is city"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/userdata/location",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "latitude",
+							"value": "53.338931200000005",
+							"description": ""
+						},
+						{
+							"key": "longitude",
+							"value": "-6.2734336",
+							"description": ""
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/bot/auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"// Checking whether the response has a status 200. If so, the request is successful.\r",
+							"\r",
+							"tests[\"content-type header is present\"] = postman.getResponseHeader(\"content-type\");\r",
+							"// Checking whether the Content-type header is present.\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking conversationId parameter from JSON data\"] = jsonData.conversationId !== \"\";\r",
+							"// Checking whether the JSON parameter \"conversationId\" exists and whether its value is a not empty string\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/bot/auth",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "message",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "from",
+							"value": "id:user1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "hello",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/bot/sendActivity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"// Checking whether the response has a status 200. If so, the request is successful.\r",
+							"\r",
+							"tests[\"content-type header is present\"] = postman.getResponseHeader(\"content-type\");\r",
+							"// Checking whether the Content-type header is present.\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking id parameter from JSON data\"] = jsonData.conversationId !== \"\";\r",
+							"// Checking whether the JSON parameter \"id\" exists and whether its value is a not empty string\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/bot/sendActivity",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "convId",
+							"value": "HQu7yYf9DrIGDdJI0LPQvW-9",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "hello",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/bot/retrieveActivity/HQu7yYf9DrIGDdJI0LPQvW-9/0\" ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"// Checking whether the response has a status 200. If so, the request is successful.\r",
+							"\r",
+							"tests[\"content-type header is present\"] = postman.getResponseHeader(\"content-type\");\r",
+							"// Checking whether the Content-type header is present.\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking activities parameter from JSON data\"] = jsonData.conversationId !== \"\";\r",
+							"// Checking whether the JSON parameter \"activities\" exists and whether its value retruns a response\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Checking watermark parameter from JSON data\"] = jsonData.watermark === \"2\";\r",
+							"// Checking whether the JSON parameter \"watermark\" exists and whether its value is a number\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/bot/retrieveActivity/HQu7yYf9DrIGDdJI0LPQvW-9/0\" ",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
