@@ -257,9 +257,13 @@ var AuthService = /** @class */ (function () {
         this.loggedInStatus = value;
     };
     ;
-    AuthService.prototype.isLoggedIn = function () {
-        return this.loggedInStatus;
-    };
+    Object.defineProperty(AuthService.prototype, "isLoggedIn", {
+        get: function () {
+            return this.loggedInStatus;
+        },
+        enumerable: true,
+        configurable: true
+    });
     ;
     AuthService.prototype.login = function (email, password) {
         return this.http.post('http://4yearproject.azurewebsites.net/api/auth/login', {

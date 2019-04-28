@@ -22,7 +22,7 @@ export class AuthService {
     this.loggedInStatus = value
   };
 
-  isLoggedIn() {
+  get isLoggedIn() {
     return this.loggedInStatus
   };
 
