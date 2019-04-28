@@ -60,14 +60,14 @@ function generateWeatherAdaptiveCard(weatherData) {
     // set current conditions text
     weatherCard.content.body[0].columns[1].items[2].text = weatherData.current.condition.text;
     // set wind speed and direction
-    weatherCard.content.body[0].columns[1].items[3].text = `Winds ${weatherData.current.wind_kmh} kmh ${weatherData.current.wind_dir}`;
+    weatherCard.content.body[0].columns[1].items[3].text = `Winds ${weatherData.current.wind_kph} kph ${weatherData.current.wind_dir}`;
     // set the select action URL
     weatherCard.content.body[1].columns[0].selectAction.url = `https://www.bing.com/search?q=forecast in ${weatherData.location.name}`;
     weatherCard.content.body[1].columns[1].selectAction.url = `https://www.bing.com/search?q=forecast in ${weatherData.location.name}`;
     weatherCard.content.body[1].columns[2].selectAction.url = `https://www.bing.com/search?q=forecast in ${weatherData.location.name}`;
     weatherCard.content.body[1].columns[3].selectAction.url = `https://www.bing.com/search?q=forecast in ${weatherData.location.name}`;
     // set the spoken utterance
-    weatherCard.content.speak = `<s>Today the temperature is ${weatherData.current.temp_c}° C in ${weatherData.location.name}</s><s>Winds are ${weatherData.current.wind_kmh} kilometers per hour from the ${weatherData.current.wind_dir}</s>`;
+    weatherCard.content.speak = `<s>Today the temperature is ${weatherData.current.temp_c}° C in ${weatherData.location.name}</s><s>Winds are ${weatherData.current.wind_kph} kilometers per hour from the ${weatherData.current.wind_dir}</s>`;
     
     // set the daily forcast info per day
     var day1 = weatherData.forecast.forecastday[0]; // today
